@@ -72,6 +72,7 @@ class Alternatif extends BaseController
 
         $this->alternatif->save([
             'alternatif' => $this->request->getVar('alternatif'),
+            'nik' => $this->request->getPost('nik'),
         ]);
 
         // pesan data berhasil ditambah
@@ -117,6 +118,7 @@ class Alternatif extends BaseController
         $this->alternatif->save([
             'id_alternatif' => $id,
             'alternatif' => $this->request->getVar('alternatif'),
+            'nik' => $this->request->getPost('nik'),
         ]);
 
         // pesan data berhasil ditambah

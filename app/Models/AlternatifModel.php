@@ -14,7 +14,7 @@ class AlternatifModel extends Model
     protected $returnType     = 'array';
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['id_bulan', 'id_tahun', 'alternatif', 'tgl_lahir', 'alamat', 'jns_kelamin', 'no_telp', 'file'];
+    protected $allowedFields = ['nik', 'id_bulan', 'id_tahun', 'alternatif', 'tgl_lahir', 'alamat', 'jns_kelamin', 'no_telp', 'file'];
 
     protected $useTimestamps = false;
     protected $createdField  = 'created_at';

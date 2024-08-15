@@ -96,7 +96,7 @@ class HitungMetode extends BaseController
             if ($existingData) {
                 // Jika data sudah ada, lakukan update
                 $this->hasil->update($existingData['id_hasil'], $data); // Pastikan 'id' adalah nama primary key dari tabel hasil
-                session()->setFlashdata('pesan', 'Maaf, Data perhitungan sudah tersimpan di database!');
+                session()->setFlashdata('pesan', 'Data perhitungan berhasil tersimpan di database!');
             } else {
                 // Jika data belum ada, lakukan insert
                 $this->hasil->save($data);

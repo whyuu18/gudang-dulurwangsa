@@ -21,6 +21,7 @@
                     <thead>
                         <th>No</th>
                         <th>Nama Alternatif</th>
+                        <th>Nomor NIK</th>
                         <th class="<?= $_SESSION['role'] == 1 ? '' : 'd-none' ?>">Aksi</th>
                     </thead>
                     <tbody>
@@ -29,6 +30,7 @@
                             <tr>
                                 <td><?= $no++ ?></td>
                                 <td><?= $row['alternatif'] ?></td>
+                                <td><?= $row['nik'] ?></td>
                                 <td class="<?= $_SESSION['role'] == 1 ? '' : 'd-none' ?>">
                                     <form action="/alternatif/edit/<?= $row['id_alternatif'] ?>" method="get" class="d-inline">
                                         <?= csrf_field() ?>

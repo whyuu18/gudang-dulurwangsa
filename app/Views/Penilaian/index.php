@@ -23,6 +23,7 @@
                             <!-- <th>Bulan</th>
                         <th>Tahun</th> -->
                             <th>Nama Alternatif</th>
+                            <th>Nomor NIK</th>
                             <th>Aksi</th>
                         </thead>
                         <tbody>
@@ -31,6 +32,7 @@
                                 <tr>
                                     <td><?= $no++ ?></td>
                                     <td><?= $row['alternatif'] ?></td>
+                                    <td><?= $row['nik'] ?></td>
                                     <td>
                                         <?php if (!empty(($row['isPenilaianExists']))) : ?>
                                             <!-- Tombol Edit -->

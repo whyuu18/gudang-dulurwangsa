@@ -14,7 +14,7 @@ class HitungMetodeModel extends Model
     protected $returnType     = 'array';
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['id_alternatif', 'id_kriteria', 'nilai'];
+    protected $allowedFields = ['id_alternatif', 'id_kriteria', 'nilai', 'nik'];
 
     protected $useTimestamps = false;
     protected $createdField  = 'created_at';
