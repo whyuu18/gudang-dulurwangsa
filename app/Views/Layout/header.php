@@ -8,12 +8,12 @@
         <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <div class="search-bar">
+    <!-- <div class="search-bar">
         <form class="search-form d-flex align-items-center" method="POST" action="#">
             <input type="text" name="query" placeholder="Search" title="Enter search keyword">
             <button type="submit" title="Search"><i class="bi bi-search"></i></button>
         </form>
-    </div><!-- End Search Bar -->
+    </div>End Search Bar -->
 
     <!-- ======= navbar ======= -->
     <nav class="header-nav ms-auto">
@@ -31,7 +31,7 @@
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     <i class="bi bi-person-circle"></i>
                     <span class="d-none d-md-block dropdown-toggle ps-2"><?= ucfirst($_SESSION['username']) ?></span>
-                </a><!-- End Profile Iamge Icon -->
+                </a><!-- End Profile Image Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
@@ -43,7 +43,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="/profile-user/<?= $_SESSION['id_user'] ?>">
+                        <a class="dropdown-item d-flex align-items-center" href="/profile-user">
                             <i class="bi bi-person"></i>
                             <span>My Profile</span>
                         </a>
