@@ -9,7 +9,7 @@
                         <h6 class="m-0 font-weight-bold text-dark align-self-center"><i class="bi bi-table"></i> Data Hasil</h6>
                         <div>
                                 <a class="btn btn-sm btn-primary align-self-center" href="/hasil/cetak"><i class="bi bi-printer"></i> Cetak</a>
-                                <a class="btn btn-sm btn-danger align-self-center" href="/hasil/hapus" onclick="return confirm('Apakah yakin?')"><i class="bi bi-trash" aria-hidden="true"></i> Hapus</a>
+                                <!-- <a class="btn btn-sm btn-danger align-self-center" href="/hasil/hapus" onclick="return confirm('Apakah yakin?')"><i class="bi bi-trash" aria-hidden="true"></i> Hapus</a> -->
                         </div>
                 </div>
                 <div class="card-body m-2">

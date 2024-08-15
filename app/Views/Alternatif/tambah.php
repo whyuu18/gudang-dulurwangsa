@@ -10,7 +10,7 @@
         <?= csrf_field() ?>
         <div class="card-body px-5 py-4 mb-4">
 
-            <div class="row mt-4">
+            <div class="row">
                 <div class="form-group col-md-12 mt-2">
                     <label class="form-label">Nama Alternatif</label>
                     <input autocomplete="off" type="text" name="alternatif" class="form-control <?= ($validation->hasError('alternatif')) ? 'is-invalid' : ''; ?>" placeholder="Masukan Alternatif" />

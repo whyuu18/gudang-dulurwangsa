@@ -115,7 +115,7 @@ class Penilaian extends BaseController
         $isipesan = '<script> alert("Berhasil ditambahkan!") </script>';
         session()->setFlashdata('pesan', $isipesan);
 
-        return redirect()->to('/penilaian/periode');
+        return redirect()->to('/penilaian');
     }
 
     public function edit($id)
