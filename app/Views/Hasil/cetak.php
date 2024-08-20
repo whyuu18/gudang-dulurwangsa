@@ -34,26 +34,32 @@
                 </div>
                 <div class="table-responsive">
                         <table id="#" class="table table-striped">
-                                <thead>
+                                <thead align="center">
                                         <th>No</th>
                                         <th>Nama Alternatif</th>
+                                        <th>Nomor NIK</th>
                                         <th>Nilai Preferensi</th>
                                         <th><i>Ranking</i></th>
                                 </thead>
                                 <tbody>
-                                        <?php $no = 1 ?>
-                                        <?php $peringkat = 1 ?>
+                                        <?php 
+                                        $no = 1;
+                                        $peringkat = 1;
+                                        $i = 0; 
+                                        ?>
                                         <?php foreach ($hasil as $row) : ?>
                                                 <tr>
-                                                        <td><?= $no++ ?></td>
+                                                        <td align="center"><?= $no++ ?></td>
                                                         <td><?= $row['alternatif'] ?></td>
-                                                        <td><?= $row['nilai'] ?></td>
-                                                        <td class="fw-bold"><?= "(" . $peringkat++ . ")" ?></td>
+                                                        <td align="center"><?= $alternatif[$i]['nik'] ?></td>
+                                                        <td align="center"><?= $row['nilai'] ?></td>
+                                                        <td align="center" class="fw-bold"><?= "(" . $peringkat++ . ")" ?></td>
                                                         <!-- <td class="fw-bold text-danger"> -->
                                                         <?php // $row['nilai'] <= 0.7 ? "Tidak Bagus" : "Bagus" 
                                                         ?></td>
                                                         <!-- </td> -->
                                                 </tr>
+                                        <?php $i++; ?>
                                         <?php endforeach ?>
                                 </tbody>
                         </table>

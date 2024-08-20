@@ -3,16 +3,19 @@
 namespace App\Controllers;
 
 use App\Models\HasilModel;
+use App\Models\AlternatifModel;
 
 class Hasil extends BaseController
 {
     protected $hasil;
     protected $dataBulan;
     protected $dataTahun;
+    protected $alternatif;
 
     public function __construct()
     {
         $this->hasil = new HasilModel();
+        $this->alternatif = new AlternatifModel();
     }
 
     public function index()
@@ -28,6 +31,7 @@ class Hasil extends BaseController
             'title' => 'Data Hasil',
             'hasil' => $this->hasil->getDataHasil(),
             'countHasil' => $this->hasil->getCountHasilUnik(),
+            'alternatif' => $this->alternatif->findAll(),
         ];
         return view('Hasil/index', $data);
     }
@@ -44,6 +48,7 @@ class Hasil extends BaseController
         $data = [
             'title' => 'cetak',
             'hasil' => $this->hasil->getDataHasil(),
+            'alternatif' => $this->alternatif->findAll(),
         ];
         return view('Hasil/cetak', $data);
     }

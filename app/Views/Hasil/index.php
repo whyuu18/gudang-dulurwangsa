@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 
 <!-- cek apakah ada data alternatif -->
-<?php if (!empty($hasil)) : ?>
+<?php if (!empty($hasil && $alternatif)) : ?>
         <div class="card mt-4 shadow-sm">
                 <div class="card-header py-3 d-flex justify-content-between">
                         <h6 class="m-0 font-weight-bold text-dark align-self-center"><i class="bi bi-table"></i> Data Hasil</h6>
@@ -15,21 +15,27 @@
                 <div class="card-body m-2">
                         <div class="table-responsive">
                                 <table id="#" class="table table-striped">
-                                        <thead>
+                                        <thead align="center">
                                                 <th>No</th>
                                                 <th>Nama Alternatif</th>
+                                                <th>Nomor NIK</th>
                                                 <th>Nilai Preferensi</th>
                                         </thead>
-                                        <tbody>
-                                                <?php $no = 1 ?>
+                                        <tbody
+                                                <?php 
+                                                $no = 1;
+                                                $i = 0;
+                                                ?>
                                                 <?php foreach ($hasil as $row) : ?>
                                                         <tr>
-                                                                <td><?= $no++ ?></td>
-                                                                <td><?= $row['alternatif'] ?></td>
-                                                                <td><?= $row['nilai'] ?></td>
+                                                                <td align="center"><?= $no++ ?></td>
+                                                                <td width=30%><?= $row['alternatif'] ?></td>
+                                                                <td align="center"><?= $alternatif[$i]['nik'] ?></td>
+                                                                <td align="center"><?= $row['nilai'] ?></td>
                                                                 <!-- <td class="fw-bold text-danger"><?php // $row['nilai'] <= 0.7 ? "Tidak Bagus" : "Bagus" 
                                                                                                         ?></td> -->
                                                         </tr>
+                                                        <?php $i++; ?>
                                                 <?php endforeach ?>
                                         </tbody>
                                 </table>

@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 <!-- cek apakah ada data alternatif -->
-<?php if (!empty($data)) : ?>
+<?php if (!empty($data && $alternatif)) : ?>
     <h5 class="mt-5">Perhitungan Metode SAW</h5>
     <?php if (session()->getFlashdata('pesan')) : ?>
         <script>
@@ -46,7 +46,8 @@
                     <thead class="bg-primary text-white">
                         <tr align="center">
                             <th width="5%" rowspan="2">No</th>
-                            <th>Alternatif</th>
+                            <th width=30%>Alternatif</th>
+                            <th width=20%>Nomor NIK</th>
                             <?php foreach ($kriteria as $key) : ?>
                                 <th><?= $key['kode_kriteria'] ?></th>
                             <?php endforeach ?>
@@ -55,15 +56,18 @@
                     <tbody>
                         <?php
                         $no = 1;
+                        $i = 0;
                         foreach ($data as $nama_alternatif => $nilaiKriteria) : ?>
                             <tr align="center">
                                 <td><?= $no; ?></td>
                                 <td align="left"><?= $nama_alternatif ?></td>
+                                <td align="center"><?= $alternatif[$i]['nik'] ?></td>
                                 <?php foreach ($kriteria as $key) : ?>
                                     <td><?= $nilaiKriteria[$key['id_kriteria']] ?? '-'; ?></td>
                                 <?php endforeach ?>
                             </tr>
-                            <?php $no++; ?>
+                        <?php $no++; ?>
+                        <?php $i++; ?>
                         <?php endforeach ?>
                     </tbody>
                 </table>
@@ -80,18 +84,23 @@
                     <thead class="bg-primary text-white">
                         <tr align="center">
                             <th width="5%" rowspan="2">No</th>
-                            <th>Alternatif</th>
+                            <th width=30%>Alternatif</th>
+                            <th width=20%>Nomor NIK</th>
                             <?php foreach ($kriteria as $key) : ?>
                                 <th><?= $key['kode_kriteria'] ?></th>
                             <?php endforeach ?>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $no = 1; ?>
+                        <?php 
+                        $no = 1;
+                        $i = 0; 
+                        ?>
                         <?php foreach ($data as $nama_alternatif => $nilaiKriteria) : ?>
                             <tr align="center">
                                 <td><?= $no; ?></td>
                                 <td align="left"><?= $nama_alternatif ?></td>
+                                <td align="center"><?= $alternatif[$i]['nik'] ?></td>
                                 <?php foreach ($kriteria as $index => $key) : ?>
                                     <?php
                                     $nilai = array_key_exists($key['id_kriteria'], $nilaiKriteria) ? $nilaiKriteria[$key['id_kriteria']] : 0;
@@ -110,7 +119,10 @@
                                     <td><?= round($nilaiDiBagi, 3) ?></td>
                                 <?php endforeach ?>
                             </tr>
-                            <?php $no++; ?>
+                            <?php 
+                            $no++;
+                            $i++;
+                            ?>
                         <?php endforeach ?>
                     </tbody>
                 </table>
@@ -126,16 +138,20 @@
                 <table class="table table-striped" width="100%" cellspacing="0">
                     <thead class="bg-primary text-white">
                         <tr align="center">
-                            <th width="5%" rowspan="2">No</th>
-                            <th>Nama Alternatif</th>
-                            <th>Perhitungan</th>
+                            <th width="2%" rowspan="2">No</th>
+                            <th width=22%>Nama Alternatif</th>
+                            <th width=17%>Nomor NIK</th>
+                            <th width=50%>Perhitungan</th>
                             <th>Nilai Preferensi</th>
                         </tr>
                     </thead>
                     <form id="formHasil" method="post" action="/perhitungan/simpan">
                         <?= csrf_field() ?>
                         <tbody>
-                            <?php $no = 1; ?>
+                            <?php 
+                            $no = 1;
+                            $i = 0;
+                            ?>
                             <?php foreach ($data_id as $id_alternatif => $nilaiKriteria) : ?>
                                 <tr align="center">
                                     <td><?= $no; ?></td>
@@ -147,6 +163,7 @@
                                         }
                                         ?>
                                     </td>
+                                    <td align="center"><?= $alternatif[$i]['nik']?></td>
                                     <td align="left">
                                         SUM
                                         <?php $nilai_v = 0; ?>
@@ -174,7 +191,10 @@
                                 </tr>
                                 <input type="hidden" name="alternatif[]" value="<?= $id_alternatif ?>">
                                 <input type="hidden" name="nilai[]" value="<?= $nilai_v ?>">
-                                <?php $no++; ?>
+                                <?php 
+                                $no++;
+                                $i++;
+                                ?>
                             <?php endforeach ?>
                         </tbody>
                 </table>
