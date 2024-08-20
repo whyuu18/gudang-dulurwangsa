@@ -51,8 +51,9 @@
                 <div class="form-group col-md-6 mt-2">
                     <label class="form-label">Level</label>
                     <select name="role" class="form-control" required>
-                        <option value="1" <?= $user['role'] == 1 ? 'selected' : '' ?>>Administrator</option>
-                        <option value="2" <?= $user['role'] == 2 ? 'selected' : '' ?>>User</option>
+                        <option value="1" <?= $user['role'] == 1 ? 'selected' : '' ?>>System Administrator</option>
+                        <option value="2" <?= $user['role'] == 2 ? 'selected' : '' ?>>Administrator</option>
+                        <option value="3" <?= $user['role'] == 3 ? 'selected' : '' ?>>Lurah</option>
                     </select>
                 </div>
             </div>

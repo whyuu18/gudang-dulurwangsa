@@ -33,7 +33,7 @@
                     <h5 class="card-title">Level User</h5>
                     <ul>
                         <li>
-                            <?= $_SESSION['role'] == 1 ? 'Administrator' : 'User' ?>
+                            <?= $_SESSION['role'] == 1 ? 'System Administrator' : 'Administrator' ?>
                         </li>
                     </ul>
                 </div>

@@ -12,7 +12,7 @@
         <?php endif ?>
         <div class="table-responsive">
             <table id="myTable" class="table table-striped">
-                <thead>
+                <thead align="center">
                     <th>No</th>
                     <th>Nama</th>
                     <th>Username</th>
@@ -22,11 +22,13 @@
                 <tbody>
                     <?php $no = 1 ?>
                     <?php foreach ($users as $row) : ?>
-                        <tr>
+                        <tr align="center">
                             <td><?= $no++ ?></td>
                             <td><?= $row['nama'] ?></td>
                             <td><?= $row['username'] ?></td>
-                            <td><?= $row['role'] == 1 ? "Administrator" : "User"; ?></td>
+                            <td>
+                                <?= $row['role'] == 1 ? "System Administrator" : "Admnistrator" ; ?>
+                            </td>
                             <td>
                                 <form action="/users/edit/<?= $row['id_user'] ?>" method="get" class="d-inline">
                                     <?= csrf_field() ?>

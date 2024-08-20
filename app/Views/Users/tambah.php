@@ -51,8 +51,9 @@
                     <label class="form-label">Level</label>
                     <select name="role" class="form-control" required>
                         <option value="">--Pilih--</option>
-                        <option value="1">Administrator</option>
-                        <option value="2">User</option>
+                        <option value="1">System Administrator</option>
+                        <option value="2">Administrator</option>
+                        <option value="3">Lurah</option>
                     </select>
                 </div>
             </div>
