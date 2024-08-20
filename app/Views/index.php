@@ -8,7 +8,7 @@
             <div class="card">
 
                 <div class="card-body">
-                    <h5 class="card-title">Selamat Datang, <?= ucfirst($_SESSION['username']) ?>!</h5>
+                    <h5 class="card-title">Selamat Datang, <?= ucfirst($_SESSION['nama']) ?>!</h5>
                 </div>
 
             </div>
