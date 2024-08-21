@@ -53,7 +53,7 @@
                     <select name="role" class="form-control" required>
                         <option value="1" <?= $user['role'] == 1 ? 'selected' : '' ?>>System Administrator</option>
                         <option value="2" <?= $user['role'] == 2 ? 'selected' : '' ?>>Administrator</option>
-                        <option value="3" <?= $user['role'] == 3 ? 'selected' : '' ?>>Lurah</option>
+                        <option value="3" <?= $user['role'] == 3 ? 'selected' : '' ?>>User</option>
                     </select>
                 </div>
             </div>

@@ -36,7 +36,7 @@
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
                         <h6><?= ucfirst($_SESSION['username']) ?></h6>
-                        <span><?= $_SESSION['role'] == 1 ? "Administrator" : "User" ?></span>
+                        <span><?= $_SESSION['role'] == 1 ? "System Administrator" : "Administrator" ?></span>
                     </li>
                     <li>
                         <hr class="dropdown-divider">

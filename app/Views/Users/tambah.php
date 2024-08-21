@@ -53,7 +53,7 @@
                         <option value="">--Pilih--</option>
                         <option value="1">System Administrator</option>
                         <option value="2">Administrator</option>
-                        <option value="3">Lurah</option>
+                        <option value="3">User</option>
                     </select>
                 </div>
             </div>
