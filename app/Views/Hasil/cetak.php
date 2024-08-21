@@ -51,7 +51,7 @@
                                                 <tr>
                                                         <td align="center"><?= $no++ ?></td>
                                                         <td><?= $row['alternatif'] ?></td>
-                                                        <td align="center"><?= $alternatif[$i]['nik'] ?></td>
+                                                        <td align="center"><?= $row['nik'] ?></td>
                                                         <td align="center"><?= $row['nilai'] ?></td>
                                                         <td align="center" class="fw-bold"><?= "(" . $peringkat++ . ")" ?></td>
                                                         <!-- <td class="fw-bold text-danger"> -->

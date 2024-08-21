@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 
 <!-- cek apakah ada data alternatif -->
-<?php if (!empty($hasil && $alternatif)) : ?>
+<?php if (!empty($hasil)) : ?>
         <div class="card mt-4 shadow-sm">
                 <div class="card-header py-3 d-flex justify-content-between">
                         <h6 class="m-0 font-weight-bold text-dark align-self-center"><i class="bi bi-table"></i> Data Hasil</h6>
@@ -30,7 +30,7 @@
                                                         <tr>
                                                                 <td align="center"><?= $no++ ?></td>
                                                                 <td width=30%><?= $row['alternatif'] ?></td>
-                                                                <td align="center"><?= $alternatif[$i]['nik'] ?></td>
+                                                                <td align="center"><?= $row['nik'] ?></td>
                                                                 <td align="center"><?= $row['nilai'] ?></td>
                                                                 <!-- <td class="fw-bold text-danger"><?php // $row['nilai'] <= 0.7 ? "Tidak Bagus" : "Bagus" 
                                                                                                         ?></td> -->

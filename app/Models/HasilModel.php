@@ -117,7 +117,7 @@ class HasilModel extends Model
     public function getDataHasil()
     {
         $builder = $this->builder();
-        $builder->select('hasil.*, alternatif.alternatif');
+        $builder->select('hasil.*, alternatif.*');
         $builder->join('alternatif', 'alternatif.id_alternatif=hasil.id_alternatif');
         $builder->orderBy('hasil.nilai', 'DESC');
         $query = $builder->get();
