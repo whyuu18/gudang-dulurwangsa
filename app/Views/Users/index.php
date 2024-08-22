@@ -27,7 +27,7 @@
                             <td><?= $row['nama'] ?></td>
                             <td><?= $row['username'] ?></td>
                             <td>
-                                <?= $row['role'] == 1 ? "System Administrator" : "Admnistrator" ; ?>
+                                <?= $row['role'] == 1 ? "System Administrator" : ($row['role'] == 2 ? "Administrator" : "User") ; ?>
                             </td>
                             <td>
                                 <form action="/users/edit/<?= $row['id_user'] ?>" method="get" class="d-inline">

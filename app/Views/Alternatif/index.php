@@ -11,7 +11,7 @@
     <div class="card mt-4 shadow-sm">
         <div class="card-header py-3 d-flex justify-content-between">
             <h6 class="m-0 font-weight-bold text-dark"><i class="bi bi-table"></i> Data Alternatif</h6>
-            <a href="<?= base_url('/alternatif/tambah') ?>" class="btn btn-sm btn-primary <?= $_SESSION['role'] == 1 ? '' : 'd-none' ?>">
+            <a href="<?= base_url('/alternatif/tambah') ?>" class="btn btn-sm btn-primary <?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">
                 <i class="bi bi-plus-circle"></i> Tambah
             </a>
         </div>
@@ -22,7 +22,7 @@
                         <th>No</th>
                         <th>Nama Alternatif</th>
                         <th>Nomor NIK</th>
-                        <th class="<?= $_SESSION['role'] == 1 ? '' : 'd-none' ?>">Aksi</th>
+                        <th class="<?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">Aksi</th>
                     </thead>
                     <tbody>
                         <?php $no = 1 ?>
@@ -31,7 +31,7 @@
                                 <td><?= $no++ ?></td>
                                 <td><?= $row['alternatif'] ?></td>
                                 <td><?= $row['nik'] ?></td>
-                                <td class="<?= $_SESSION['role'] == 1 ? '' : 'd-none' ?>">
+                                <td class="<?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">
                                     <form action="/alternatif/edit/<?= $row['id_alternatif'] ?>" method="get" class="d-inline">
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="_method" value="GET">

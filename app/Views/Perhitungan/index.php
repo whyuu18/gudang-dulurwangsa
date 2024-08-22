@@ -201,7 +201,7 @@
             </div>
         </div>
     </div>
-    <button class="btn btn-primary mt-3 <?= $_SESSION['role'] == 1 ? '' : 'd-none' ?>" type="submit">Simpan Hasil Perhitungan</button>
+    <button class="btn btn-primary mt-3 <?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>" type="submit">Simpan Hasil Perhitungan</button>
     </form>
 
     <!-- jika tidak ada data tampilkan pesan -->
