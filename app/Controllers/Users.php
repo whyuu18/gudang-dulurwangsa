@@ -78,7 +78,7 @@ class Users extends BaseController
 
         // enkripsi password dengan Bcrypt
         $password = $this->request->getVar('password');
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $hashedPassword = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
 
         $this->users->save([
             'username' => $this->request->getVar('username'),
@@ -160,7 +160,7 @@ class Users extends BaseController
 
         // verifikasi password
         $password = $this->request->getVar('password');
-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+        $hashedPassword = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
 
         $this->users->save([
             'id_user' => $id,
