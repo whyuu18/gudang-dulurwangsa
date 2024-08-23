@@ -13,7 +13,7 @@
                 <form action="/sub-kriteria/tambah/<?= $data['kriteria']['id_kriteria'] ?>" method="get" class="d-inline">
                     <?= csrf_field() ?>
                     <input type="hidden" name="_method" value="GET">
-                    <button type="submit" class="btn btn-sm btn-primary"><i class="bi bi-plus-circle" aria-hidden="true"></i> Tambah</button>
+                    <button type="submit" class="btn btn-sm btn-primary <?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>"><i class="bi bi-plus-circle" aria-hidden="true"></i> Tambah</button>
                 </form>
             </div>
 
@@ -26,7 +26,7 @@
                                     <th>No</th>
                                     <th>Nama Sub Kriteria</th>
                                     <th>Nilai</th>
-                                    <th>Aksi</th>
+                                    <th class="<?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">Aksi</th>
                                 </thead>
                                 <tbody>
                                     <?php $no = 1; ?>
@@ -40,12 +40,12 @@
                                                     <?= csrf_field() ?>
                                                     <input type="hidden" name="id_kriteria" value="<?= $subkriteriaItem['id_kriteria'] ?>">
                                                     <input type="hidden" name="_method" value="GET">
-                                                    <button type="submit" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
+                                                    <button type="submit" class="btn btn-sm btn-warning <?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>"><i class="bi bi-pencil"></i></button>
                                                 </form>
                                                 <form action="/sub-kriteria/hapus/<?= $subkriteriaItem['id_sub_kriteria'] ?>" method="post" class="d-inline">
                                                     <?= csrf_field() ?>
                                                     <input type="hidden" name="_method" value="DELETE">
-                                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah yakin?')"><i class="bi bi-trash"></i></button>
+                                                    <button type="submit" class="btn btn-sm btn-danger <?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>" onclick="return confirm('Apakah yakin?')"><i class="bi bi-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

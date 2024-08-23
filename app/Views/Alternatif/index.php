@@ -23,6 +23,7 @@
                         <th>Nama Alternatif</th>
                         <th>Nomor NIK</th>
                         <th class="<?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">Aksi</th>
+                        <th class="<?= $_SESSION['role'] == 3 ? '' : 'd-none' ?>">Lihat Data</th>
                     </thead>
                     <tbody>
                         <?php $no = 1 ?>
@@ -41,6 +42,13 @@
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah yakin?')"><i class="bi bi-trash"></i></button>
+                                    </form>
+                                </td>
+                                <td class="<?= $_SESSION['role'] == 3 ? '' : 'd-none' ?>">
+                                    <form action="/penilaian/edit/<?= $row['id_alternatif'] ?>" method="get" class="d-inline">
+                                        <?= csrf_field() ?>
+                                        <input type="hidden" name="_method" value="GET">
+                                        <button type="submit" class="btn btn-sm btn-warning"><i class="bi bi-eye-fill"></i></button>
                                     </form>
                                 </td>
                             </tr>

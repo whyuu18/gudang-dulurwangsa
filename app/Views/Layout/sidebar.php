@@ -11,10 +11,10 @@
             </a>
         </li><!-- End Dashboard Nav -->
 
-        <li class="nav-heading mt-4 <?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">SPK</li>
+        <li class="nav-heading mt-4 <?= $_SESSION['role'] == 1 || 2 || 3 ? '' : 'd-none' ?>">SPK</li>
 
         <!-- menu sidebar -->
-        <li class="nav-item <?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">
+        <li class="nav-item <?= $_SESSION['role'] == 1 || 2 || 3 ? '' : 'd-none' ?>">
             <a class="nav-link collapsed" data-bs-target="#kriteria-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-journal-text"></i><span>Kriteria</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
