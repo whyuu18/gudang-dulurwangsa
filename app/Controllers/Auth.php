@@ -36,7 +36,7 @@ class Auth extends BaseController
             // cek password, jika benar buat session dan arahkan ke halaman utama
             $authenticatePassword = password_verify($data['password'], $user['password']);
             // dd($authenticatePassword); // outputnya false
-            if ($authenticatePassword) {
+            if ($authenticatePassword == false) {
                 $this->session->setFlashdata('msg', 'Password salah');
                 return redirect()->to('/login');
             } else {
