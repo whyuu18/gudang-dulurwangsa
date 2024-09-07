@@ -4,7 +4,7 @@
 <div class="card mt-3 shadow-sm">
     <div class="card-header d-sm-flex align-items-center justify-content-between">
         <h6 class="text-muted">Edit Penilaian Untuk Alternatif <?= $idAlternatif['alternatif'] ?> - <?= $idAlternatif['nik'] ?></h6>
-        <a href="<?= base_url('/penilaian') ?>" class="btn btn-secondary btn-sm <?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>"></span>
+        <a href="<?= base_url('/alternatif') ?>" class="btn btn-secondary btn-sm <?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>"></span>
             <i class="bi bi-backspace"></i><span class="text"> Kembali</span>
         </a>
         <a href="<?= base_url('/alternatif') ?>" class="btn btn-secondary btn-sm <?= $_SESSION['role'] == 3 ? '' : 'd-none' ?>"></span>

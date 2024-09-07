@@ -23,6 +23,7 @@
                         <th>Nama Alternatif</th>
                         <th>Nomor NIK</th>
                         <th class="<?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">Aksi</th>
+                        <th class="<?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">Penilaian</th>
                         <th class="<?= $_SESSION['role'] == 3 ? '' : 'd-none' ?>">Lihat Data</th>
                     </thead>
                     <tbody>
@@ -50,6 +51,23 @@
                                         <input type="hidden" name="_method" value="GET">
                                         <button type="submit" class="btn btn-sm btn-warning"><i class="bi bi-eye-fill"></i></button>
                                     </form>
+                                </td>
+                                <td class="<?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">
+                                    <?php if (!empty(($row['isPenilaianExists']))) : ?>
+                                        <!-- Tombol Edit -->
+                                        <form action="/penilaian/edit/<?= $row['id_alternatif'] ?>" method="get" class="d-inline">
+                                            <?= csrf_field() ?>
+                                            <input type="hidden" name="_method" value="GET">
+                                            <button type="submit" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
+                                        </form>
+                                    <?php else : ?>
+                                        <!-- Tombol Input -->
+                                        <form action="/penilaian/tambah/<?= $row['id_alternatif'] ?>" method="get" class="d-inline">
+                                            <?= csrf_field() ?>
+                                            <input type="hidden" name="_method" value="GET">
+                                            <button type="submit" class="btn btn-sm btn-primary">Input</button>
+                                        </form>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endforeach ?>

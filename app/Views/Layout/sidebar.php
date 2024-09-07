@@ -46,11 +46,11 @@
             </a>
             <?php ($title == "Edit Penilaian" || $title == "Penilaian" || $title == "Perhitungan" || $title == "Data Hasil") ? $show = "show" : $show = ""; ?>
             <ul id="alternatif-nav" class="nav-content collapse <?= $show ?>" data-bs-parent="#sidebar-nav">
-                <li class="<?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">
+                <!-- <li class="<?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">
                     <a href="/penilaian" class="<?= $title == 'Penilaian' ? 'active' : 'collapsed' ?>">
                         <i class="bi bi-circle"></i><span>Penilaian</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="/perhitungan" class="<?= $title == 'Perhitungan' ? 'active' : 'collapsed' ?>">
                         <i class="bi bi-circle"></i><span>Perhitungan</span>

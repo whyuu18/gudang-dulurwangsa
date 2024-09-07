@@ -24,9 +24,17 @@ class Alternatif extends BaseController
             session()->setFlashdata('error', 'Anda harus login terlebih dahulu.');
             return redirect()->to('/login');
         }
+
+        $alternatifList = $this->alternatif->findAll();
+        foreach ($alternatifList as $key => $alternatif) {
+            // Memeriksa apakah sudah ada penilaian untuk alternatif ini
+            $isPenilaianExists = $this->penilaian->where('id_alternatif', $alternatif['id_alternatif'])->countAllResults() > 0;
+            $alternatifList[$key]['isPenilaianExists'] = $isPenilaianExists;
+        }
+
         $data = [
             'title' => 'Data Alternatif',
-            'alternatif' => $this->alternatif->findAll() // Gunakan data alternatif berdasarkan periode
+            'alternatif' => $alternatifList
         ];
         return view('alternatif/index', $data);
     }

@@ -115,7 +115,7 @@ class Penilaian extends BaseController
         $isipesan = '<script> alert("Berhasil ditambahkan!") </script>';
         session()->setFlashdata('pesan', $isipesan);
 
-        return redirect()->to('/penilaian');
+        return redirect()->to('/alternatif');
     }
 
     public function edit($id)
@@ -199,6 +199,6 @@ class Penilaian extends BaseController
         $isipesan = '<script> alert("Penilaian alternatif berhasil diupdate!") </script>';
         session()->setFlashdata('pesan', $isipesan);
 
-        return redirect()->to('/penilaian');
+        return redirect()->to('/alternatif');
     }
 }
