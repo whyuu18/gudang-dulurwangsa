@@ -4,9 +4,14 @@
 <div class="card mt-3 shadow-sm">
     <div class="card-header d-sm-flex align-items-center justify-content-between">
         <h6 class="text-muted">Input Penilaian Untuk Alternatif <b><?= $idAlternatif['alternatif'] ?></b></h6>
-        <a href="<?= base_url('/penilaian') ?>" class="btn btn-secondary btn-sm"></span>
+        <a href="<?= base_url('/alternatif') ?>" class="btn btn-secondary btn-sm"></span>
             <span class="text">Kembali</span>
         </a>
+    </div>
+    <div class="row my-3">
+        <div class="col md-5">
+            <img src="<?= base_url('img/' . $idAlternatif['foto_ktp']) ?>" alt="" width="300" height="300" class="img-thumbnail">
+        </div>
     </div>
     <form action="/penilaian/simpan/<?= $idAlternatif['id_alternatif'] ?>" method="post">
         <?= csrf_field() ?>

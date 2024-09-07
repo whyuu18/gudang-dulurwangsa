@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <form action="/alternatif/update/<?= $alternatif['id_alternatif'] ?>" method="post">
+    <form action="/alternatif/update/<?= $alternatif['id_alternatif'] ?>" method="post" enctype="multipart/form-data">
         <?= csrf_field() ?>
         <div class="card-body px-5 py-4 mb-4">
             <input type="hidden" name="id" value="<?= $alternatif['id_alternatif'] ?>">
@@ -38,8 +38,12 @@
                         <?= $validation->getError('nik'); ?>
                     </div>
                 </div>
-
+                <div class="form-group col-md-12 mt-2">
+                    <label class="form-label">Upload KTP</label>
+                    <input type="file" name="foto_ktp" class="form-control" placeholder="foto_ktp" />
+                </div>
             </div>
+
         </div>
         <div class="card-footer text-right">
             <button name="submit" value="submit" type="submit" class="btn btn-success btn-sm"><i class="bi bi-save"></i> Simpan</button>

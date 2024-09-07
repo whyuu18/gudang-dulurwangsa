@@ -11,6 +11,12 @@
             <i class="bi bi-backspace"></i><span class="text"> Kembali</span>
         </a>
     </div>
+    <div class="row my-3">
+        <div class="col md-5">
+            <img src="<?= base_url('img/' . $idAlternatif['foto_ktp']) ?>" alt="" width="300" height="300" class="img-thumbnail">
+        </div>
+    </div>
+
     <form action="/penilaian/update/<?= $idAlternatif['id_alternatif'] ?>" method="post">
         <?= csrf_field() ?>
         <div class="card-body px-5 py-4 mb-2">

@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <form action="/alternatif/simpan" method="post">
+    <form action="/alternatif/simpan" method="post" enctype="multipart/form-data">
         <?= csrf_field() ?>
         <div class="card-body px-5 py-4 mb-4">
 
@@ -36,9 +36,12 @@
                         <?= $validation->getError('nik'); ?>
                     </div>
                 </div>
+                <div class="form-group col-md-12 mt-2">
+                    <label class="form-label">Upload KTP</label>
+                    <input type="file" name="foto_ktp" class="form-control" placeholder="foto_ktp" />
+                </div>
             </div>
             
-        </div>
         <div class="card-footer text-right">
             <button name="submit" value="submit" type="submit" class="btn btn-success btn-sm"><i class="bi bi-save"></i> Simpan</button>
             <a href="<?= base_url('/alternatif') ?>" class="btn btn-info btn-sm"></span>
