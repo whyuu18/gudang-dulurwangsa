@@ -56,27 +56,26 @@ class Kriteria extends BaseController
 
     public function simpan()
     {
+        $kriteria = new kriteriaModel();
+
         // validasi input
-        if (!$this->validate([
+        $rules = [
             'kriteria' => [
-                // 'rules' => 'required|is_unique[kriteria.kriteria]',
+                'rules' => 'required|is_unique[kriteria.kriteria]|alpha_space',
                 'errors' => [
-                    'required' => 'kriteria {field} harus diisi!',
-                    // 'is_unique' => 'kriteria {field} sudah ada!'
+                    'required' => 'Kriteria wajib diisi!',
+                    'is_unique' => 'Kriteria sudah terdaftar!',
+                    'alpha_space' => 'Kriteria tidak valid!'
                 ]
             ]
-        ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/kriteria/simpan')->withInput()->with('validation', $validation);
+        ];
+
+        if(!$this->validate($rules)){
+            session()->setFlashdata('errors', $this->validator->listErrors());
+            return redirect()->back();
         }
 
-        $this->kriteria->save([
-            'kode_kriteria' => $this->request->getVar('kode'),
-            'kriteria' => $this->request->getVar('kriteria'),
-            'type' => $this->request->getVar('type'),
-            'bobot' => $this->request->getVar('bobot'),
-            'ada_pilihan' => $this->request->getVar('adaPilihan'),
-        ]);
+        $alternatif->save($this->request->getPost());
 
         // pesan data berhasil ditambah
         $isipesan = '<script> alert("Kriteria berhasil ditambahkan!") </script>';
@@ -104,18 +103,22 @@ class Kriteria extends BaseController
 
     public function update($id)
     {
+        $kriteria = new kriteriaModel();
+
         // validasi input
-        if (!$this->validate([
-            'alternatif' => [
-                // 'rules' => 'required|is_unique[alternatif.alternatif]',
+        $rules = [
+            'kriteria' => [
+                'rules' => 'required|alpha_space',
                 'errors' => [
-                    'required' => 'kriteria {field} harus diisi!',
-                    // 'is_unique' => 'alternatif {field} sudah ada!'
+                    'required' => 'Kriteria wajib diisi!',
+                    'alpha_space' => 'Kriteria tidak valid!'
                 ]
             ]
-        ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/kriteria/edit/' . $id)->withInput()->with('validation', $validation);
+        ];
+
+        if(!$this->validate($rules)){
+            session()->setFlashdata('errors', $this->validator->listErrors());
+            return redirect()->back();
         }
 
         $this->kriteria->save([
@@ -195,18 +198,22 @@ class Kriteria extends BaseController
 
     public function simpanSubKriteria($id)
     {
+        $subKriteria = new subKriteriaModel();
+
         // validasi input
-        if (!$this->validate([
-            'kriteria' => [
-                // 'rules' => 'required|is_unique[kriteria.kriteria]',
+        $rules = [
+            'subKriteria' => [
+                'rules' => 'required|is_unique[sub_kriteria.sub_kriteria]',
                 'errors' => [
-                    'required' => 'kriteria {field} harus diisi!',
-                    // 'is_unique' => 'kriteria {field} sudah ada!'
+                    'required' => 'Sub kriteria wajib diisi!',
+                    'is_unique' => 'Sub kriteria sudah terdaftar!'
                 ]
             ]
-        ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/kriteria/simpanSubKriteria/' . $id)->withInput()->with('validation', $validation);
+        ];
+
+        if(!$this->validate($rules)){
+            session()->setFlashdata('errors', $this->validator->listErrors());
+            return redirect()->back();
         }
 
         $this->subKriteria->save([
@@ -236,18 +243,21 @@ class Kriteria extends BaseController
 
     public function updateSubKriteria($id)
     {
+        $subKriteria = new subKriteriaModel();
+
         // validasi input
-        if (!$this->validate([
+        $rules = [
             'subKriteria' => [
-                // 'rules' => 'required|is_unique[sub_kriteria.subKriteria]',
+                'rules' => 'required',
                 'errors' => [
-                    'required' => 'kriteria {field} harus diisi!',
-                    // 'is_unique' => 'alternatif {field} sudah ada!'
+                    'required' => 'Sub kriteria wajib diisi!'
                 ]
             ]
-        ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/sub-kriteria/edit/' . $id)->withInput()->with('validation', $validation);
+        ];
+
+        if(!$this->validate($rules)){
+            session()->setFlashdata('errors', $this->validator->listErrors());
+            return redirect()->back();
         }
 
         $this->subKriteria->save([

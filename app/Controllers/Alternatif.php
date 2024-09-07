@@ -54,26 +54,35 @@ class Alternatif extends BaseController
 
     public function simpan()
     {
+        $alternatif = new alternatifModel();
+        
         // validasi input
-        if (!$this->validate([
+        $rules = [
             'alternatif' => [
-                // 'rules' => 'required|is_unique[alternatif.alternatif]',
+                'rules' => 'required|is_unique[alternatif.alternatif]|alpha_space',
                 'errors' => [
-                    'required' => 'nama {field} harus diisi!',
-                    // 'is_unique' => 'alternatif {field} sudah ada!'
+                    'required' => 'Nama wajib diisi!',
+                    'is_unique' => 'Nama sudah terdaftar!',
+                    'alpha_space' => 'Nama tidak valid!'
+                ]
+            ],
+            'nik' => [
+                'rules' => 'required|min_length[16]|numeric|is_unique[alternatif.nik]',
+                'errors' => [
+                    'required' => 'NIK wajib diisi!',
+                    'min_length' => 'NIK wajib 16 karakter!',
+                    'numeric' => 'NIK wajib berupa angka!',
+                    'is_unique' => 'NIK sudah terdaftar!'
                 ]
             ]
-        ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/alternatif/simpan')->withInput()->with('validation', $validation);
+        ];
+
+        if(!$this->validate($rules)){
+            session()->setFlashdata('errors', $this->validator->listErrors());
+            return redirect()->back();
         }
 
-        // session()->setFlashdata('pesan', $isipesan);
-
-        $this->alternatif->save([
-            'alternatif' => $this->request->getVar('alternatif'),
-            'nik' => $this->request->getPost('nik'),
-        ]);
+        $alternatif->save($this->request->getPost());
 
         // pesan data berhasil ditambah
         $isipesan = '<script> alert("Alternatif berhasil ditambahkan!") </script>';
@@ -102,17 +111,27 @@ class Alternatif extends BaseController
     public function update($id)
     {
         // validasi input
-        if (!$this->validate([
+        $rules = [
             'alternatif' => [
-                // 'rules' => 'required|is_unique[alternatif.alternatif]',
+                'rules' => 'required|alpha_space',
                 'errors' => [
-                    'required' => 'nama {field} harus diisi!',
-                    // 'is_unique' => 'alternatif {field} sudah ada!'
+                    'required' => 'Nama wajib diisi!',
+                    'alpha_space' => 'Nama tidak valid!'
+                ]
+            ],
+            'nik' => [
+                'rules' => 'required|min_length[16]|numeric',
+                'errors' => [
+                    'required' => 'NIK wajib diisi!',
+                    'min_length' => 'NIK wajib 16 karakter!',
+                    'numeric' => 'NIK wajib berupa angka!'
                 ]
             ]
-        ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/Alternatif/edit/' . $id)->withInput()->with('validation', $validation);
+        ];
+
+        if(!$this->validate($rules)){
+            session()->setFlashdata('errors', $this->validator->listErrors());
+            return redirect()->back();
         }
 
         $this->alternatif->save([

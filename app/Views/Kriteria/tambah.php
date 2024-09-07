@@ -4,7 +4,17 @@
 <div class="card mt-3 shadow-sm">
     <div class="card-header d-sm-flex align-items-center justify-content-between">
         <h6 class="text-muted">Tambah Data Kriteria</h6>
-
+    </div>
+    <div class="col">
+        <div class="row">
+            <?php if(session()->getFlashdata('errors')) : ?>
+                <div class="mt-1 col-md-5">
+                    <div class="alert alert-danger" role="alert">
+                        <?= session()->getFlashdata('errors') ?>
+                    </div>
+                </div>
+            <?php endif ?>
+        </div>
     </div>
 
     <form action="/kriteria/simpan" method="post">

@@ -8,6 +8,17 @@
             <i class="bi bi-backspace"></i><span class="text"> Kembali</span>
         </a>
     </div>
+    <div class="col">
+        <div class="row">
+            <?php if(session()->getFlashdata('errors')) : ?>
+                <div class="mt-1 col-md-5">
+                    <div class="alert alert-danger" role="alert">
+                        <?= session()->getFlashdata('errors') ?>
+                    </div>
+                </div>
+            <?php endif ?>
+        </div>
+    </div>
 
     <form action="/users/simpan" method="post">
         <?= csrf_field() ?>
@@ -39,12 +50,12 @@
 
                 <div class="form-group col-md-6 mt-2">
                     <label class="form-label">Nama</label>
-                    <input autocomplete="off" type="text" name="nama" value="<?= old('nama') ?>" class="form-control" required />
+                    <input autocomplete="off" type="text" name="nama" value="<?= old('nama') ?>" class="form-control" />
                 </div>
 
                 <div class="form-group col-md-6 mt-2">
                     <label class="form-label">E-Mail</label>
-                    <input autocomplete="off" type="email" name="email" value="<?= old('username') ?>" class="form-control" required />
+                    <input autocomplete="off" type="email" name="email" value="<?= old('username') ?>" class="form-control" />
                 </div>
 
                 <div class="form-group col-md-6 mt-2">

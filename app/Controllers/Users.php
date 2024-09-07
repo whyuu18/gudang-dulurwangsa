@@ -48,45 +48,57 @@ class Users extends BaseController
 
     public function simpan()
     {
-        // // validasi input
-        // if (!$this->validate([
-        //     'username' => [
-        //         'rules' => 'required|is_unique[user.username]',
-        //         // 'errors' => [
-        //         //     'required' => 'nama {field} harus diisi!',
-        //         //     'is_unique' => 'username {field} sudah ada!'
-        //         // ]
-        //     ],
-        //     'password' => [
-        //         'rules' => 'required|min_length[6]',
-        //         // 'errors' => [
-        //         //     'required' => 'Password harus diisi!',
-        //         //     'min_length' => 'Password minimal harus memiliki panjang 6 karakter!'
-        //         // ]
-        //     ],
-        //     'confirm_password' => [
-        //         'rules' => 'required|matches[password]',
-        //         // 'errors' => [
-        //         //     'required' => 'Konfirmasi password harus diisi!',
-        //         //     'matches' => 'Konfirmasi password tidak cocok dengan password!'
-        //         // ]
-        //     ]
-        // ])) {
-        //     // $validation = \Config\Services::validation();
-        //     return redirect()->to('/users/simpan');
-        // }
+        $users = new usersModel();
+
+        // validasi input
+        $rules = [
+            'username' => [
+                'rules' => 'required|is_unique[user.username]',
+                'errors' => [
+                    'required' => 'Username wajib diisi!',
+                    'is_unique' => 'Username sudah terdaftar!'
+                ]
+            ],
+            'password' => [
+                'rules' => 'required|min_length[6]',
+                'errors' => [
+                    'required' => 'Password wajib diisi!',
+                    'min_length' => 'Password minimal memiliki panjang 6 karakter!'
+                ]
+            ],
+            'confirm_password' => [
+                'rules' => 'required|matches[password]',
+                'errors' => [
+                    'required' => 'Konfirmasi password wajib diisi!',
+                    'matches' => 'Konfirmasi password tidak cocok dengan password!'
+                ]
+            ],
+            'nama' => [
+                'rules' => 'required|alpha_space',
+                'errors' => [
+                    'required' => 'Nama wajib diisi!',
+                    'alpha_space' => 'Nama tidak valid!'
+                ]
+            ],
+            'email' => [
+                'rules' => 'required|valid_email',
+                'errors' => [
+                    'required' => 'Email wajib diisi!',
+                    'valid_email' => 'Email tidak valid!'
+                ]
+            ]
+        ];
+
+        if(!$this->validate($rules)){
+            session()->setFlashdata('errors', $this->validator->listErrors());
+            return redirect()->back();
+        }
 
         // enkripsi password dengan Bcrypt
         $password = $this->request->getVar('password');
         $hashedPassword = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
 
-        $this->users->save([
-            'username' => $this->request->getVar('username'),
-            'password' => $hashedPassword,
-            'nama' => $this->request->getVar('nama'),
-            'email' => $this->request->getVar('email'),
-            'role' => $this->request->getVar('role'),
-        ]);
+        $users->save($this->request->getPost());
 
         // pesan data berhasil ditambah
         $isipesan = '<script> alert("User berhasil ditambahkan!") </script>';
@@ -130,33 +142,50 @@ class Users extends BaseController
 
     public function update($id)
     {
-        // // validasi input
-        // if (!$this->validate([
-        //     'username' => [
-        //         'rules' => 'required|is_unique[user.username]',
-        //         'errors' => [
-        //             'required' => 'nama {field} harus diisi!',
-        //             'is_unique' => 'username {field} sudah ada!',
-        //         ]
-        //     ],
-        //     'password' => [
-        //         'rules' => 'required|min_length[6]',
-        //         'errors' => [
-        //             'required' => 'Password harus diisi!',
-        //             'min_length' => 'Password minimal harus memiliki panjang 6 karakter!',
-        //         ]
-        //     ],
-        //     'confirm_password' => [
-        //         'rules' => 'required|matches[password]',
-        //         'errors' => [
-        //             'required' => 'Konfirmasi password harus diisi!',
-        //             'matches' => 'Konfirmasi password tidak cocok dengan password!',
-        //         ]
-        //     ]
-        // ])) {
-        //     $validation = \Config\Services::validation();
-        //     return redirect()->to('/users/edit/' . $id)->withInput()->with('validation', $validation);
-        // }
+        $users = new usersModel();
+
+        // validasi input
+        $rules = [
+            'username' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Username wajib diisi!'
+                ]
+            ],
+            'password' => [
+                'rules' => 'required|min_length[6]',
+                'errors' => [
+                    'required' => 'Password wajib diisi!',
+                    'min_length' => 'Password minimal memiliki panjang 6 karakter!'
+                ]
+            ],
+            'confirm_password' => [
+                'rules' => 'required|matches[password]',
+                'errors' => [
+                    'required' => 'Konfirmasi password wajib diisi!',
+                    'matches' => 'Konfirmasi password tidak cocok dengan password!'
+                ]
+            ],
+            'nama' => [
+                'rules' => 'required|alpha_space',
+                'errors' => [
+                    'required' => 'Nama wajib diisi!',
+                    'alpha_space' => 'Nama tidak valid!'
+                ]
+            ],
+            'email' => [
+                'rules' => 'required|valid_email',
+                'errors' => [
+                    'required' => 'Email wajib diisi!',
+                    'valid_email' => 'Email tidak valid!'
+                ]
+            ]
+        ];
+
+        if(!$this->validate($rules)){
+            session()->setFlashdata('errors', $this->validator->listErrors());
+            return redirect()->back();
+        }
 
         // verifikasi password
         $password = $this->request->getVar('password');
