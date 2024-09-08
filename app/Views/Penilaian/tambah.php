@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <div class="card mt-3 shadow-sm">
     <div class="card-header d-sm-flex align-items-center justify-content-between">
-        <h6 class="text-muted">Input Penilaian Untuk Alternatif <b><?= $idAlternatif['alternatif'] ?></b></h6>
+        <h6 class="text-muted">Input Penilaian Untuk Alternatif <b><?= $idAlternatif['alternatif'] ?> - <?= $idAlternatif['nik'] ?></b></h6>
         <a href="<?= base_url('/alternatif') ?>" class="btn btn-secondary btn-sm"></span>
             <span class="text">Kembali</span>
         </a>
