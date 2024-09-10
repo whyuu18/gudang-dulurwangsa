@@ -67,10 +67,9 @@ class Alternatif extends BaseController
         // validasi input
         $rules = [
             'alternatif' => [
-                'rules' => 'required|is_unique[alternatif.alternatif]|alpha_space',
+                'rules' => 'required|alpha_space',
                 'errors' => [
                     'required' => 'Nama wajib diisi!',
-                    'is_unique' => 'Nama sudah terdaftar!',
                     'alpha_space' => 'Nama tidak valid!'
                 ]
             ],
@@ -145,11 +144,12 @@ class Alternatif extends BaseController
                 ]
             ],
             'nik' => [
-                'rules' => 'required|min_length[16]|numeric',
+                'rules' => 'required|min_length[16]|numeric|is_unique[alternatif.nik]',
                 'errors' => [
                     'required' => 'NIK wajib diisi!',
                     'min_length' => 'NIK wajib 16 karakter!',
-                    'numeric' => 'NIK wajib berupa angka!'
+                    'numeric' => 'NIK wajib berupa angka!',
+                    'is_unique' => 'NIK sudah terdaftar!'
                 ]
             ],
             // 'foto_ktp' => [

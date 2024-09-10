@@ -32,8 +32,6 @@
                                                                 <td width=30%><?= $row['alternatif'] ?></td>
                                                                 <td align="center"><?= $row['nik'] ?></td>
                                                                 <td align="center"><?= $row['nilai'] ?></td>
-                                                                <!-- <td class="fw-bold text-danger"><?php // $row['nilai'] <= 0.7 ? "Tidak Bagus" : "Bagus" 
-                                                                                                        ?></td> -->
                                                         </tr>
                                                         <?php $i++; ?>
                                                 <?php endforeach ?>
