@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="form-group col-md-12 mt-2">
                     <label class="form-label">Nama Alternatif</label>
-                    <input autocomplete="off" type="text" name="alternatif" class="form-control <?= ($validation->hasError('alternatif')) ? 'is-invalid' : ''; ?>" value="<?= $alternatif['alternatif'] ?>" />
+                    <input onkeyup="this.value = this.value.toUpperCase()" autocomplete="off" type="text" name="alternatif" class="form-control <?= ($validation->hasError('alternatif')) ? 'is-invalid' : ''; ?>" value="<?= $alternatif['alternatif'] ?>" />
                     <div class="invalid-feedback">
                         <?= $validation->getError('alternatif'); ?>
                     </div>
@@ -39,8 +39,10 @@
                     </div>
                 </div>
                 <div class="form-group col-md-12 mt-2">
-                    <label class="form-label">Upload KTP</label>
-                    <input type="file" name="foto_ktp" class="form-control" placeholder="foto_ktp" />
+                    <label class="form-label">Foto KTP</label>
+                </div>
+                <div class="col">
+                    <img src="<?= base_url('img/' . $alternatif['foto_ktp']) ?>" alt="" width="300" height="300" class="img-thumbnail">
                 </div>
             </div>
 

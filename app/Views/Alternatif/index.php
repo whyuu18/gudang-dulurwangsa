@@ -22,7 +22,7 @@
                         <th>No</th>
                         <th>Nama Alternatif</th>
                         <th>Nomor NIK</th>
-                        <th class="<?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">Upload data</th>
+                        <th class="<?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">Edit data</th>
                         <th class="<?= $_SESSION['role'] == 1 ? '' : ($_SESSION['role'] == 2 ? '' : 'd-none') ?>">Penilaian</th>
                         <th class="<?= $_SESSION['role'] == 3 ? '' : 'd-none' ?>">Lihat Data</th>
                     </thead>

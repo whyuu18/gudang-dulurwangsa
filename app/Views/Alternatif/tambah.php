@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="form-group col-md-12 mt-2">
                     <label class="form-label">Nama Alternatif</label>
-                    <input autocomplete="off" type="text" name="alternatif" class="form-control <?= ($validation->hasError('alternatif')) ? 'is-invalid' : ''; ?>" placeholder="Masukan Alternatif" />
+                    <input onkeyup="this.value = this.value.toUpperCase()" autocomplete="off" type="text" name="alternatif" class="form-control <?= ($validation->hasError('alternatif')) ? 'is-invalid' : ''; ?>" placeholder="Masukan Alternatif" />
                     <div class="invalid-feedback">
                         <?= $validation->getError('alternatif'); ?>
                     </div>
@@ -36,13 +36,15 @@
                         <?= $validation->getError('nik'); ?>
                     </div>
                 </div>
-                <div class="form-group col-md-12 mt-2">
+                <div class="form-group col-md-12 mt-2 mb-3">
                     <label class="form-label">Upload KTP</label>
                     <input type="file" name="foto_ktp" class="form-control" placeholder="foto_ktp" />
+                    <div class="row"><label class="text-danger">*Pastikan foto KTP sudah benar</label></div>
+                    <div class="row"><label class="text-danger">*Upload foto KTP hanya berlaku 1 kali</label></div>
                 </div>
             </div>
             
-        <div class="card-footer text-right">
+        <div class="card-footer text-right pt-2">
             <button name="submit" value="submit" type="submit" class="btn btn-success btn-sm"><i class="bi bi-save"></i> Simpan</button>
             <a href="<?= base_url('/alternatif') ?>" class="btn btn-info btn-sm"></span>
                 <span class="text">Kembali</span>

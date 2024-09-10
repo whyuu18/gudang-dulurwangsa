@@ -84,7 +84,7 @@ class Alternatif extends BaseController
                 ]
             ],
             'foto_ktp' => [
-                'rules' => 'uploaded[foto_ktp]|max_size[foto_ktp,2048]|mime_in[foto_ktp,image/jpg,image/jpeg,image/png]',
+                'rules' => 'uploaded[foto_ktp]|max_size[foto_ktp,2048]|mime_in[foto_ktp,image/jpg,image/jpeg,image/png]|is_unique[alternatif.foto_ktp]',
                 'errors' => [
                     'uploaded' => 'Wajib mengupload KTP!',
                     'max_size' => 'Upload file maksimal berukuran 2MB!',
@@ -152,14 +152,14 @@ class Alternatif extends BaseController
                     'numeric' => 'NIK wajib berupa angka!'
                 ]
             ],
-            'foto_ktp' => [
-                'rules' => 'uploaded[foto_ktp]|max_size[foto_ktp,2048]|mime_in[foto_ktp,image/jpg,image/jpeg,image/png]',
-                'errors' => [
-                    'uploaded' => 'Wajib mengupload KTP!',
-                    'max_size' => 'Upload file maksimal berukuran 2MB!',
-                    'mime_in' => 'Upload file wajib berformat jpg/jpeg/png!'
-                ]
-            ]
+            // 'foto_ktp' => [
+            //     'rules' => 'uploaded[foto_ktp]|max_size[foto_ktp,2048]|mime_in[foto_ktp,image/jpg,image/jpeg,image/png]',
+            //     'errors' => [
+            //         'uploaded' => 'Wajib mengupload KTP!',
+            //         'max_size' => 'Upload file maksimal berukuran 2MB!',
+            //         'mime_in' => 'Upload file wajib berformat jpg/jpeg/png!'
+            //     ]
+            // ]
         ];
 
         if(!$this->validate($rules)){
@@ -167,16 +167,16 @@ class Alternatif extends BaseController
             return redirect()->back();
         }
 
-        $fotoKtp = $this->request->getFile('foto_ktp');
-        $namaKtp = $fotoKtp->getRandomName();
+        // $fotoKtp = $this->request->getFile('foto_ktp');
+        // $namaKtp = $fotoKtp->getRandomName();
 
-        $fotoKtp->move('img', $namaKtp);
+        // $fotoKtp->move('img', $namaKtp);
 
         $this->alternatif->save([
             'id_alternatif' => $id,
             'alternatif' => $this->request->getVar('alternatif'),
             'nik' => $this->request->getPost('nik'),
-            'foto_ktp' => $namaKtp
+            // 'foto_ktp' => $namaKtp
         ]);
 
         // pesan data berhasil ditambah
